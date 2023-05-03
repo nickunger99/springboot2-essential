@@ -8,13 +8,10 @@ import academy.devdojo.springboot2essentials.repository.AnimeRepository;
 import academy.devdojo.springboot2essentials.requests.AnimePostRequestBody;
 import academy.devdojo.springboot2essentials.requests.AnimePutRequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 @RequiredArgsConstructor
@@ -42,6 +39,7 @@ public class AnimeService {
                 .orElseThrow(() -> new BadRequestException("Anime not Found"));
     }
 
+    @Transactional
     public Anime save(AnimePostRequestBody animePostRequestBody) {
      // Anime anime =  Anime.builder().name(animePostRequestBody.getName()).build();
 //    anime.setId(ThreadLocalRandom.current().nextLong(3, 100000));
