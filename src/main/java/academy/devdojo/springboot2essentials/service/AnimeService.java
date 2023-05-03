@@ -25,8 +25,12 @@ public class AnimeService {
 //        animes = new ArrayList<>(List.of(new Anime(1L, "Boku no Hero"), new Anime(2L, "Berserk")));
 //    }
 
-    public List<Anime> ListAll() {
+    public List<Anime> listAll() {
         return animeRepository.findAll();
+    }
+
+    public List<Anime> findByName(String name) {
+        return animeRepository.findByName(name);
     }
 
     public Anime findByIdOrThrowBadRequestException(long id) {
@@ -58,4 +62,6 @@ public class AnimeService {
         anime.setId(savedAnime.getId());
         animeRepository.save(anime);
     }
+
+
 }
