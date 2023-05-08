@@ -23,10 +23,14 @@ public class AnimeService {
 //    private static List<Anime> animes;
 //    static {
 //        animes = new ArrayList<>(List.of(new Anime(1L, "Boku no Hero"), new Anime(2L, "Berserk")));
-//    }
 
+//    }
     public Page<Anime> listAll(Pageable pageable) {
         return animeRepository.findAll(pageable);
+    }
+
+    public List<Anime> listAllNonPageable() {
+        return animeRepository.findAll();
     }
 
     public List<Anime> findByName(String name) {
@@ -63,6 +67,5 @@ public class AnimeService {
         anime.setId(savedAnime.getId());
         animeRepository.save(anime);
     }
-
 
 }
